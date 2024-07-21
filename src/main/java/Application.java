@@ -77,8 +77,7 @@ public class Application extends javafx.application.Application {
         SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(maxIt, fitnessFunction,
                 dim, positionUp, positionDown, ts, d, te);
         simulatedAnnealing.init();
-        FutureTask<List<BigDecimal>> simulatedAnnealingTask = new FutureTask<>(new AppTask(simulatedAnnealing));
-        return simulatedAnnealingTask;
+        return new FutureTask<>(new AppTask(simulatedAnnealing));
     }
 
     private void buildSeries(XYChart.Series<Double, Double> series, List<BigDecimal> data) {
