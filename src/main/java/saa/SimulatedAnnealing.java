@@ -78,6 +78,11 @@ public class SimulatedAnnealing implements SwarmIntelligence {
         for (int i = 0; i < dim; i++) {
             BigDecimal step = up.get(i).subtract(down.get(i)).divide(BigDecimal.valueOf(maxIt), 2, RoundingMode.DOWN);
             BigDecimal data = x.get(i).add(step.multiply(BigDecimal.valueOf(Math.random() * 2 - 1)));
+            if (data.compareTo(up.get(i)) >= 0) {
+                data = up.get(i);
+            } else if (data.compareTo(down.get(i)) <= 0) {
+                data = down.get(i);
+            }
             tempx.add(data);
         }
         return tempx;
